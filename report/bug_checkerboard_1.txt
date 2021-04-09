@@ -1,0 +1,19 @@
+Name
+Out-of-Bounds access
+
+Description
+It accesses to out of image_data array.
+
+Affected Lines
+From checkboard.c:106 to checkboard.c:113
+
+Expected vs Observed
+We want to fill checks to the pallete, but if an height or a width of pallete is smaller than a width of a check,
+there occurs Out-of-Bounds access. (malloc(): corrupted top size error).
+
+Steps to Reproduce
+Command
+./checkerboard out.png 100 100 200 eb4034 ffffff
+
+Suggested Fix Description
+Compare pallete and a width of checks. If check is larger than pallete, go to error_size.

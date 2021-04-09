@@ -1,0 +1,19 @@
+Name
+command injection
+
+Description
+The program uses system() to print a size of a png file. 
+
+Affected Lines
+From solid.c:121 to solid.c:122
+
+Expected vs Observed
+We want to print a size of a png file by using system function. But a user can inject special commands
+in place of a output file name.
+
+Steps to Reproduce
+Command
+./solid out.png\;ls 1000 1000 eb4034
+
+Suggested Fix Description
+Using a function ftell() of file.

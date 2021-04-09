@@ -1,0 +1,20 @@
+Name
+Use-after-free
+
+Description
+The variable ‘palette’ is freed in almost every situation.
+
+Affected Lines
+From solid.c:44 to solid.c:46
+
+Expected vs Observed
+As the comment says, we want to free palette if the user provides negative height or height is 0 
+and the end_ptr hasn’t moved. But in this case, in every normal case, palette is freed and there 
+occurs segmentation error.
+
+Steps to Reproduce
+Command
+./solid out.png 1 1 eb4034
+
+Suggested Fix Description
+If you want to free the pointer, put it in if-loop on top of free(palette).
