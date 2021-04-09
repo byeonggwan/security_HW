@@ -1,0 +1,18 @@
+Name
+Buffer overflow - stack overflow
+
+Description
+Using strcpy(argv[])
+
+Affected Lines
+checkboard.c:21 and checkboard.c:22
+
+Expected vs Observed
+We want to copy the filenames but there could occur BOF.
+
+Steps to Reproduce
+Command
+#### fill this blank #######
+
+Suggested Fix Description
+Using strncpy.

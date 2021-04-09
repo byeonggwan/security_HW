@@ -18,8 +18,11 @@ int main(int argc, char *argv[]) {
   }
 
   // Copy the filenames into separate arrays for easier reference
-  strcpy(input, argv[1]);
-  strcpy(output, argv[2]);
+  /*strcpy(input, argv[1]);
+  strcpy(output, argv[2]);*/
+
+  strncpy(input, argv[1], 254);
+  strncpy(output, argv[2], 254);
 
   /* Parse the points. Invalid input will just set the coordinate to 0.
    * The program will still work.
