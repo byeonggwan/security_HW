@@ -1,0 +1,20 @@
+Name
+Out-of-Bounds access
+
+Description
+It accesses to out of image_data array.
+
+Affected Lines
+From checkboard.c:46 to checkboard.c:85
+
+Expected vs Observed
+We want to draw a circle to the pallete, but if trying to draw a circle out of the image,
+there occurs Out-of-Bounds access. (segmentation fault).
+
+Steps to Reproduce
+Command
+./solid out.png 1000 1000 000000
+./circle out.png out2.png 500 500 501 ffffff
+
+Suggested Fix Description
+Compare the image and the position of the circle. If the circle is out of the image, print an error and return 1.
