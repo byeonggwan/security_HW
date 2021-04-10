@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
   if (load_png(input, &img)) {
     return 1;
   }
-
+  
   unsigned height = img->size_y;
   unsigned width = img->size_x;
 
@@ -54,8 +54,8 @@ int main(int argc, char *argv[]) {
   }
 
   new_img->px = malloc(new_size);
-
-  if (!img->px) {
+  
+  if (!new_img->px) {
     goto error_memory_img;
   }
 
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
       }
     }
   }
-
+  
   store_png(output, new_img, NULL, 0);
   free(img->px);
   free(img);
@@ -96,7 +96,7 @@ error_memory_img:
 error_memory:
   free(img->px);
 
-  free(img->px);
+  free(img);
   printf("Memory error!");
   return 1;
 }

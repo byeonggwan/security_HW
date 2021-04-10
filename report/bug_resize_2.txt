@@ -5,7 +5,7 @@ Description
 it could access out of the image.
 
 Affected Lines
-From resize.c:62 to resize.c:70
+From resize.c:62 to resize.c:63
 
 Expected vs Observed
 If a user wants to reduce a size of a image, the factor become a decimal number. Then in this case, 

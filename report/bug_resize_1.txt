@@ -2,20 +2,16 @@ Name
 Unchecked malloc
 
 Description
-A user could try to allocate out of the maximum size of malloc.
+we check the wrong pointer
 
 Affected Lines
-resize.c:49
+From resize.c:49 to resize.c:53
 
 Expected vs Observed
-We try to allocate a memory for new image, but users are required to enter a size of the space
-so they can try to allocate too large size. In my environment, it produces lots of errors like segmentation fault,
-or munmap_chunk(): invalid pointer error because of the limitation of data type.
+We try to allocate a memory for new image, but when we fail to do it, we should check new_img, not img.
 
 Steps to Reproduce
 Command
-./solid out.png 100 100 000000
-./resize out.png out2.png 1000
 
 Suggested Fix Description
-I couldn't find a proper answer for this, so I just limit the size.
+check new_img->px.
