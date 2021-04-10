@@ -5,7 +5,7 @@ Description
 Using strcpy(argv[])
 
 Affected Lines
-checkboard.c:21 and checkboard.c:22
+rect.c:21 and rect.c:22
 
 Expected vs Observed
 We want to copy the filenames but there could occur BOF.
