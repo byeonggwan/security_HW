@@ -1,0 +1,19 @@
+Name
+double-free bug
+
+Description
+we free img->px twice when error_memory_img and error_memory occur
+
+Affected Lines
+From resize.c:87 to resize.c:94
+
+Expected vs Observed
+we want to free pointers when an error occurs, butwe free img->px twice 
+when error_memory_img and error_memory occur
+
+Steps to Reproduce
+Command
+
+
+Suggested Fix Description
+change last of them to free(img).

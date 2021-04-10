@@ -1,0 +1,20 @@
+Name
+out-of-bounds access
+
+Description
+we draw rect out of the image.
+
+Affected Lines
+From rect.c:62 to rect.c:63
+
+Expected vs Observed
+we want to draw rect out of the image. But when we try to fix large values to bottom right and bottom left,
+malloc(): corrupted top size error occurs.
+
+Steps to Reproduce
+Command
+./solid out.png 100 100 000000
+./rect hey.png hey2.png 0 0 1000 1000 888888
+
+Suggested Fix Description
+Delete equal sign.

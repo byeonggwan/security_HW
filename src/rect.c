@@ -62,8 +62,8 @@ int main(int argc, char *argv[]) {
    * - below TL
    * - above BR
    */
-  for (int i = 0; i <= height; i++) {
-    for (int j = 0; j <= width; j++) {
+  for (int i = 0; i < height; i++) {
+    for (int j = 0; j < width; j++) {
 
       // Check if the pixel is in the rectangle
 

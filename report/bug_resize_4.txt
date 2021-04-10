@@ -1,0 +1,22 @@
+Name
+allocate too large space
+(double-free bug or segmentation fault)
+
+Description
+A user could try to allocate out of the maximum size of malloc.
+
+Affected Lines
+resize.c:49
+
+Expected vs Observed
+We try to allocate a memory for new image, but users are required to enter a size of the space
+so they can try to allocate too large size. In my environment, it produces lots of errors like segmentation fault,
+or munmap_chunk(): invalid pointer error because of the limitation of data type.
+
+Steps to Reproduce
+Command
+./solid out.png 100 100 000000
+./resize out.png out2.png 500
+
+Suggested Fix Description
+I couldn't find a proper answer for this, so I just limit the size.

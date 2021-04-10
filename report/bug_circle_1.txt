@@ -5,7 +5,7 @@ Description
 It accesses to out of image_data array.
 
 Affected Lines
-From checkboard.c:46 to checkboard.c:85
+From circle.c:46 to circle.c:85
 
 Expected vs Observed
 We want to draw a circle to the pallete, but if trying to draw a circle out of the image,

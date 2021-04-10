@@ -1,0 +1,17 @@
+Name
+Unchecked malloc
+
+Description
+we check the wrong pointer
+
+Affected Lines
+From resize.c:49 to resize.c:53
+
+Expected vs Observed
+We try to allocate a memory for new image, but when we fail to do it, we should check new_img, not img.
+
+Steps to Reproduce
+Command
+
+Suggested Fix Description
+check new_img->px.
