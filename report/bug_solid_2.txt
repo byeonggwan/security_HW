@@ -5,7 +5,7 @@ Description
 The program uses system() to print a size of a png file. 
 
 Affected Lines
-From solid.c:121 to solid.c:122
+From solid.c:118 to solid.c:120
 
 Expected vs Observed
 We want to print a size of a png file by using system function. But a user can inject special commands
