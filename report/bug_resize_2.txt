@@ -1,0 +1,22 @@
+Name
+Out-of-bounds access
+
+Description
+it could access out of the image.
+
+Affected Lines
+From resize.c:62 to resize.c:70
+
+Expected vs Observed
+If a user wants to reduce a size of a image, the factor become a decimal number. Then in this case, 
+if we round 'factor * img->size_x(or y)', it can be larger than the size of actual resized image,
+so it occurs out-of-bounds access. (In my environment, the error says that there occurs 
+double free or corruption error)
+
+Steps to Reproduce
+Command
+./solid out.png 100 100 000000
+./resize out.png out2.png 0.255
+
+Suggested Fix Description
+Using floor function in place of round function.

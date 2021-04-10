@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
   /* Allocate memory for the resized image */
   new_img = malloc(sizeof(struct image));
-
+  
   if (!new_img) {
     goto error_memory;
   }
@@ -46,7 +46,14 @@ int main(int argc, char *argv[]) {
   new_img->size_x = new_width;
   new_img->size_y = new_height;
 
-  new_img->px = malloc(new_width * new_height * sizeof(struct pixel));
+  unsigned new_size = new_width * new_height * sizeof(struct pixel);
+  unsigned max_size = 1000000000;
+  if (new_size > max_size){
+    printf("you cannot use more than %u bytes. \nyou try to use %u bytes.\n", max_size, new_size);
+    return 1;
+  }
+
+  new_img->px = malloc(new_size);
 
   if (!img->px) {
     goto error_memory_img;
@@ -59,8 +66,8 @@ int main(int argc, char *argv[]) {
 
     /* Iterate over all pixels in the new image and fill them with the nearest
      * neighbor in the old one */
-    for (unsigned y = 0; y < round(factor * img->size_y); y++) {
-      for (unsigned x = 0; x < round(factor * img->size_x); x++) {
+    for (unsigned y = 0; y < floor(factor * img->size_y); y++) {
+      for (unsigned x = 0; x < floor(factor * img->size_x); x++) {
 
         /* Calculate the location of the pixel in the old image */
         unsigned nearest_x = x / factor;
