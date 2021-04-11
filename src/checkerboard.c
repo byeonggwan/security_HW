@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
     goto error;
   }
 
-  if(square_width > width || square_width > height){
+  if (square_width > width || square_width > height) {
     goto error_size;
   }
 

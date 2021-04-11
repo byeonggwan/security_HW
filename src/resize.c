@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
   if (load_png(input, &img)) {
     return 1;
   }
-  
+
   unsigned height = img->size_y;
   unsigned width = img->size_x;
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
   /* Allocate memory for the resized image */
   new_img = malloc(sizeof(struct image));
-  
+
   if (!new_img) {
     goto error_memory;
   }
@@ -48,13 +48,14 @@ int main(int argc, char *argv[]) {
 
   unsigned new_size = new_width * new_height * sizeof(struct pixel);
   unsigned max_size = 1000000000;
-  if (new_size > max_size){
-    printf("you cannot use more than %u bytes. \nyou try to use %u bytes.\n", max_size, new_size);
+  if (new_size > max_size) {
+    printf("you cannot use more than %u bytes. \nyou try to use %u bytes.\n",
+           max_size, new_size);
     return 1;
   }
 
   new_img->px = malloc(new_size);
-  
+
   if (!new_img->px) {
     goto error_memory_img;
   }
@@ -78,7 +79,7 @@ int main(int argc, char *argv[]) {
       }
     }
   }
-  
+
   store_png(output, new_img, NULL, 0);
   free(img->px);
   free(img);

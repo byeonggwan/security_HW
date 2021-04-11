@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
   if (load_png(input, &img)) {
     return 1;
   }
-  
+
   unsigned height = img->size_y;
   unsigned width = img->size_x;
 
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     int y = round(center_y +
                   sqrt(radius * radius - (x - center_x) * (x - center_x)));
 
-    if (x < 0 || x > width || y < 0 || y > height){
+    if (x < 0 || x > width || y < 0 || y > height) {
       printf("cannot draw circle out of the image\n");
       return 1;
     }
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
     int x = round(center_x +
                   sqrt(radius * radius - (y - center_y) * (y - center_y)));
 
-    if (x < 0 || x > width || y < 0 || y > height){
+    if (x < 0 || x > width || y < 0 || y > height) {
       printf("cannot draw circle out of the image\n");
       return 1;
     }
@@ -95,6 +95,6 @@ int main(int argc, char *argv[]) {
   store_png(output, img, NULL, 0);
   free(img->px);
   free(img);
-  
+
   return 0;
 }

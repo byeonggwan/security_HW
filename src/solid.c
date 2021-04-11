@@ -11,7 +11,7 @@ struct pixel *allocate_palette() {
 int main(int argc, char *argv[]) {
   struct image *img = NULL;
   struct pixel *palette = allocate_palette();
-  
+
   /*
    * goto statements should be used only in two cases:
    *
@@ -41,11 +41,10 @@ int main(int argc, char *argv[]) {
   /* If the user provides negative height or the height is 0 and the end_ptr
    * hasn't moved we issue an error and free palette
    */
-  if (height < 0 || *end_ptr){
+  if (height < 0 || *end_ptr) {
     free(palette);
     goto error;
   }
-    
 
   long width = strtol(width_arg, &end_ptr, 10);
 
@@ -96,7 +95,7 @@ int main(int argc, char *argv[]) {
       }
     }
   }
-  
+
   if (store_png(output_name, img, palette, 1)) {
     goto error_px;
   }
@@ -118,11 +117,10 @@ int main(int argc, char *argv[]) {
    */
   fflush(stdout);
   FILE *fp = fopen(output_name, "r");
-  if(fp == NULL){
+  if (fp == NULL) {
     printf("error: cannot open file \'%d\'", output_name);
     return 1;
-  }
-  else{
+  } else {
     fseek(fp, 0, SEEK_END);
     printf("%d\n", ftell(fp));
     fclose(fp);

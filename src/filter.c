@@ -121,7 +121,7 @@ void filter_negative(struct image *img, void *noarg) {
       neg->green = 255 - current.green;
       neg->blue = 255 - current.blue;
       neg->alpha = current.alpha;
-      
+
       /* Write it back */
       image_data[i][j] = *neg;
     }
