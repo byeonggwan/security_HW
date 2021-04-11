@@ -12,7 +12,7 @@ We want to copy the filenames but there could occur BOF.
 
 Steps to Reproduce
 Command
-#### fill this blank #######
+You can make it by input so many word for input_image.
 
 Suggested Fix Description
 Using strncpy.
