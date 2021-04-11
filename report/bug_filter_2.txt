@@ -1,0 +1,19 @@
+Name
+Type confusion 
+
+Description
+It uses weight in place of alpha.
+
+Affected Lines
+filter.c:215
+
+Expected vs Observed
+In case of alpha filter, it filter with a color of hex_alpha. But if fil.arg = &weight,
+you can't get alpha value which gets arg value.
+
+Steps to Reproduce
+Command
+./filter out.png out2.png alpha 888888 (arg value can be any value)
+
+Suggested Fix Description
+Use pointer of alpha value.

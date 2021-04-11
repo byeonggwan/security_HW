@@ -1,0 +1,18 @@
+Name
+Accessing unallocated memory
+
+Description
+get_pixel function returns unallocated pixel pointer.
+
+Affected Lines
+filter.c:103
+
+Expected vs Observed
+We should returns allocated pixel in this function but we don't allocate it.
+
+Steps to Reproduce
+Command
+./filter out.png out2.png negative
+
+Suggested Fix Description
+Use malloc for allocating pixel.

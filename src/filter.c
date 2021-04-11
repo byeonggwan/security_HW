@@ -100,8 +100,8 @@ void filter_blur(struct image *img, void *r) {
 
 /* We allocate and return a pixel */
 struct pixel *get_pixel() {
-  struct pixel px;
-  return &px;
+  struct pixel *px = malloc(sizeof(struct pixel));
+  return px;
 }
 
 /* This filter just negates every color in the image */
@@ -121,7 +121,7 @@ void filter_negative(struct image *img, void *noarg) {
       neg->green = 255 - current.green;
       neg->blue = 255 - current.blue;
       neg->alpha = current.alpha;
-
+      
       /* Write it back */
       image_data[i][j] = *neg;
     }
@@ -178,7 +178,7 @@ int __attribute__((weak)) main(int argc, char *argv[]) {
 
   /* If the filter takes an argument, copy it */
   if (argv[4]) {
-    strcpy(arg, argv[4]);
+    strncpy(arg, argv[4], 256);
   }
 
   /* Error when loading a png image */
@@ -212,7 +212,7 @@ int __attribute__((weak)) main(int argc, char *argv[]) {
     }
 
     fil.filter = filter_transparency;
-    fil.arg = &weights;
+    fil.arg = &alpha;
   }
 
   /* Invalid filter check */

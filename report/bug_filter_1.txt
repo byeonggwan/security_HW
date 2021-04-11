@@ -1,0 +1,19 @@
+Name
+buffer overflow - stack overflow
+
+Description
+It uses strcpy with argv
+
+Affected Lines
+filter.c:181
+
+Expected vs Observed
+We want to take an argument from a user, but if we use strcpy in this case, it could occurs buffer overflow
+from arg[256].
+
+Steps to Reproduce
+Command
+You can make it by input so many words for arg[256].
+
+Suggested Fix Description
+use strncpy.
